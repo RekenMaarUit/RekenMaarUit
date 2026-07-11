@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Naam van calculator | RekenMaarUit.nl</title>
+
+    <meta
+        name="description"
+        content="Korte omschrijving van wat deze calculator berekent."
+    >
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="calculator.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="logo" href="../../index.html">
+                RekenMaarUit<span>.nl</span>
+            </a>
+
+            <p class="tagline">Geen mening. Gewoon rekenen.</p>
+        </div>
+    </header>
+
+    <main class="tool-page">
+        <nav class="breadcrumb" aria-label="Kruimelpad">
+            <a href="../../index.html">Alle rekentools</a>
+            <span aria-hidden="true">/</span>
+            <span>Rubriek</span>
+        </nav>
+
+        <header class="tool-intro">
+            <p class="eyebrow">Rubriek</p>
+            <h1>Naam van calculator</h1>
+            <p>
+                Korte uitleg van wat de gebruiker met deze calculator kan berekenen.
+            </p>
+        </header>
+
+        <div class="calculator-layout">
+            <section class="calculator-card" aria-labelledby="calculator-heading">
+                <h2 id="calculator-heading">Vul de gegevens in</h2>
+
+                <form id="vergaderkosten-form" class="calculator-form">
+                    <div class="form-field">
+                        <label for="deelnemers">Aantal deelnemers</label>
+
+                        <input
+                            type="number"
+                            id="deelnemers"
+                            name="deelnemers"
+                            min="1"
+                            step="1"
+                            value="6"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="voorbeeld">Voorbeeldinvoer</label>
+
+                        <input
+                            type="number"
+                            id="voorbeeld"
+                            name="voorbeeld"
+                            min="0"
+                            step="1"
+                            value="0"
+                            required
+                        >
+
+                        <p class="field-help">
+                            Leg hier uit wat de gebruiker moet invullen.
+                        </p>
+                    </div>
+
+                        <p class="field-help">
+                            Gebruik bijvoorbeeld het interne kostentarief
+                            of een geschat gemiddeld uurtarief.
+                        </p>
+                    </div>
+                </form>
+            </section>
+
+            <section
+                id="resultaat"
+                class="result-card"
+                aria-live="polite"
+                aria-labelledby="resultaat-heading"
+            >
+                <p class="result-card__label">Uitkomst</p>
+
+                <h2 id="resultaat-heading">Nog niets berekend</h2>
+
+                <p>
+                    Vul de gegevens in en klik op
+                    <strong>Bereken</strong>.
+                </p>
+            </section>
+        </div>
+
+        <section class="explanation-card">
+            <h2>Hoe wordt dit berekend?</h2>
+
+            <p class="formula">
+                Plaats hier de formule.
+            </p>
+
+            <p>
+                Leg hier de berekening, aannames en beperkingen uit.
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> RekenMaarUit.nl</p>
+        <p>Versie 0.1</p>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
