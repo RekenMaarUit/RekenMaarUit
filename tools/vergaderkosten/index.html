@@ -1,111 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Wat kost deze vergadering? | RekenMaarUit.nl</title>
+
     <meta
         name="description"
-        content="Bereken de geschatte kosten van een vergadering op basis van deelnemers, uurtarief en vergadertijd."
+        content="Bereken de geschatte kosten van een vergadering op basis van deelnemers, uurtarief en vergaderduur."
     >
 
     <link rel="stylesheet" href="../../css/style.css">
+    <script src="calculator.js" defer></script>
 </head>
 
 <body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="logo" href="../../index.html">
+                RekenMaarUit<span>.nl</span>
+            </a>
 
-<header>
-    <a href="../../index.html">RekenMaarUit.nl</a>
-</header>
+            <p class="tagline">Geen mening. Gewoon rekenen.</p>
+        </div>
+    </header>
 
-<main>
+    <main class="tool-page">
+        <nav class="breadcrumb" aria-label="Kruimelpad">
+            <a href="../../index.html">Alle rekentools</a>
+            <span aria-hidden="true">/</span>
+            <span>Vergaderkosten</span>
+        </nav>
 
-    <h1>Wat kost deze vergadering?</h1>
+        <header class="tool-intro">
+            <p class="eyebrow">Vergaderkosten</p>
 
-    <p>
-        Bereken eenvoudig wat een vergadering kost op basis van het
-        gemiddelde uurtarief van de deelnemers en de duur van de vergadering.
-    </p>
+            <h1>Wat kost deze vergadering?</h1>
 
-    <form id="vergaderkosten-form">
+            <p>
+                Bereken wat een vergadering kost op basis van het aantal
+                deelnemers, hun gemiddelde uurtarief en de vergaderduur.
+            </p>
+        </header>
 
-        <label for="deelnemers">Aantal deelnemers</label>
-        <input
-            type="number"
-            id="deelnemers"
-            min="1"
-            value="6"
-            required
-        >
+        <div class="calculator-layout">
+            <section class="calculator-card" aria-labelledby="calculator-heading">
+                <h2 id="calculator-heading">Vul de gegevens in</h2>
 
-        <label for="uurtarief">Gemiddeld uurtarief (€)</label>
-        <input
-            type="number"
-            id="uurtarief"
-            min="0"
-            step="0.01"
-            value="75"
-            required
-        >
+                <form id="vergaderkosten-form" class="calculator-form">
+                    <div class="form-field">
+                        <label for="deelnemers">Aantal deelnemers</label>
 
-        <small>
-            Gebruik het interne kostentarief of een geschat gemiddeld uurtarief.
-        </small>
+                        <input
+                            type="number"
+                            id="deelnemers"
+                            name="deelnemers"
+                            min="1"
+                            step="1"
+                            value="6"
+                            required
+                        >
+                    </div>
 
-        <label for="duur">Vergaderduur (minuten)</label>
-        <input
-            type="number"
-            id="duur"
-            min="1"
-            value="60"
-            required
-        >
+                    <div class="form-field">
+                        <label for="uurtarief">
+                            Gemiddeld uurtarief
+                        </label>
 
-        <p>
-            <button type="submit">Bereken</button>
-            <button type="reset">Reset</button>
-        </p>
+                        <div class="input-prefix">
+                            <span aria-hidden="true">€</span>
 
-    </form>
+                            <input
+                                type="number"
+                                id="uurtarief"
+                                name="uurtarief"
+                                min="0"
+                                step="0.01"
+                                value="75"
+                                required
+                            >
+                        </div>
 
-    <section id="resultaat" aria-live="polite">
+                        <p class="field-help">
+                            Gebruik bijvoorbeeld het interne kostentarief
+                            of een geschat gemiddeld uurtarief.
+                        </p>
+                    </div>
 
-        <h2>Resultaat</h2>
+                    <div class="form-field">
+                        <label for="duur">Vergaderduur</label>
 
-        <p>
-            Vul de gegevens in en klik op <strong>Bereken</strong>.
-        </p>
+                        <div class="input-suffix">
+                            <input
+                                type="number"
+                                id="duur"
+                                name="duur"
+                                min="1"
+                                step="1"
+                                value="60"
+                                required
+                            >
 
-    </section>
+                            <span>minuten</span>
+                        </div>
+                    </div>
 
-    <section>
+                    <div class="form-actions">
+                        <button class="button" type="submit">
+                            Bereken kosten
+                        </button>
 
-        <h2>Hoe wordt dit berekend?</h2>
+                        <button class="button button--secondary" type="reset">
+                            Reset
+                        </button>
+                    </div>
+                </form>
+            </section>
 
-        <p>
-            <strong>Vergaderkosten = aantal deelnemers × uurtarief × vergadertijd (in uren)</strong>
-        </p>
+            <section
+                id="resultaat"
+                class="result-card"
+                aria-live="polite"
+                aria-labelledby="resultaat-heading"
+            >
+                <p class="result-card__label">Uitkomst</p>
 
-        <p>
-            Deze berekening houdt alleen rekening met de tijdsinvestering
-            van de deelnemers. Voorbereiding, reistijd, faciliteiten en
-            eventuele indirecte kosten zijn niet meegenomen.
-        </p>
+                <h2 id="resultaat-heading">Nog niets berekend</h2>
 
-    </section>
+                <p>
+                    Vul de gegevens in en klik op
+                    <strong>Bereken kosten</strong>.
+                </p>
+            </section>
+        </div>
 
-</main>
+        <section class="explanation-card">
+            <h2>Hoe wordt dit berekend?</h2>
 
-<footer>
+            <p class="formula">
+                Vergaderkosten = deelnemers × uurtarief × duur in uren
+            </p>
 
-    <p>
-        © RekenMaarUit.nl
-    </p>
+            <p>
+                De vergaderduur in minuten wordt eerst gedeeld door 60.
+                Daarna wordt deze vermenigvuldigd met het aantal deelnemers
+                en het gemiddelde uurtarief.
+            </p>
 
-</footer>
+            <p>
+                Deze berekening houdt alleen rekening met de tijdsinvestering
+                van de deelnemers. Voorbereiding, reistijd, faciliteiten en
+                eventuele indirecte kosten zijn niet meegenomen.
+            </p>
+        </section>
+    </main>
 
-<script src="calculator.js"></script>
+    <footer class="site-footer">
+        <p>&copy; <span id="year"></span> RekenMaarUit.nl</p>
+        <p>Versie 0.1</p>
+    </footer>
 
+    <script src="../../js/main.js"></script>
 </body>
 </html>

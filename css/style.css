@@ -336,3 +336,264 @@ input:focus-visible {
         transition: none !important;
     }
 }
+
+/* Calculatorpagina */
+
+.tool-page {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    color: var(--muted-color);
+    font-size: 0.9rem;
+}
+
+.breadcrumb a {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.tool-intro {
+    max-width: 48rem;
+    margin-bottom: 3rem;
+}
+
+.tool-intro h1 {
+    max-width: 15ch;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+}
+
+.tool-intro > p:last-child {
+    max-width: 42rem;
+    margin: 1.25rem 0 0;
+    color: var(--muted-color);
+    font-size: 1.1rem;
+}
+
+.calculator-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.calculator-card,
+.result-card,
+.explanation-card {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow);
+}
+
+.calculator-card {
+    padding: clamp(1.4rem, 3vw, 2.25rem);
+}
+
+.calculator-card h2,
+.explanation-card h2 {
+    margin: 0 0 1.5rem;
+    font-size: 1.5rem;
+    letter-spacing: -0.025em;
+}
+
+.calculator-form {
+    display: grid;
+    gap: 1.4rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-field label {
+    font-weight: 750;
+}
+
+.form-field input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.85rem;
+    color: var(--text-color);
+    background: #ffffff;
+    border: 1px solid #bcc7cf;
+    border-radius: 0.65rem;
+    font: inherit;
+    font-size: 1rem;
+}
+
+.form-field input:hover {
+    border-color: #96a6b1;
+}
+
+.form-field input:focus {
+    border-color: var(--accent-color);
+    outline: 3px solid rgba(23, 107, 91, 0.16);
+}
+
+.field-help {
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 0.9rem;
+}
+
+.input-prefix,
+.input-suffix {
+    display: flex;
+    align-items: stretch;
+}
+
+.input-prefix > span,
+.input-suffix > span {
+    display: flex;
+    align-items: center;
+    padding: 0 0.85rem;
+    color: var(--muted-color);
+    background: #eef2f4;
+    border: 1px solid #bcc7cf;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.input-prefix > span {
+    border-right: 0;
+    border-radius: 0.65rem 0 0 0.65rem;
+}
+
+.input-prefix input {
+    border-radius: 0 0.65rem 0.65rem 0;
+}
+
+.input-suffix input {
+    border-radius: 0.65rem 0 0 0.65rem;
+}
+
+.input-suffix > span {
+    border-left: 0;
+    border-radius: 0 0.65rem 0.65rem 0;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+button.button {
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+}
+
+.button--secondary {
+    color: var(--text-color);
+    background: #e7ecef;
+}
+
+.button--secondary:hover {
+    background: #dbe2e6;
+}
+
+.result-card {
+    position: sticky;
+    top: 1.5rem;
+    padding: clamp(1.4rem, 3vw, 2rem);
+    color: #ffffff;
+    background: var(--accent-color);
+    border-color: transparent;
+}
+
+.result-card__label {
+    margin: 0 0 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.result-card h2 {
+    margin: 0;
+    font-size: clamp(1.65rem, 4vw, 2.4rem);
+    letter-spacing: -0.035em;
+}
+
+.result-card p {
+    margin: 1rem 0 0;
+}
+
+.result-card strong {
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1;
+}
+
+.explanation-card {
+    max-width: 52rem;
+    margin-top: 1.5rem;
+    padding: clamp(1.4rem, 3vw, 2.25rem);
+}
+
+.explanation-card p {
+    color: var(--muted-color);
+}
+
+.explanation-card p:last-child {
+    margin-bottom: 0;
+}
+
+.formula {
+    padding: 1rem 1.1rem;
+    color: var(--text-color) !important;
+    background: var(--soft-background);
+    border-left: 4px solid var(--accent-color);
+    border-radius: 0.35rem;
+    font-weight: 750;
+}
+
+@media (max-width: 800px) {
+    .calculator-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        position: static;
+    }
+}
+
+@media (max-width: 500px) {
+    .tool-page {
+        padding-top: 1.25rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .breadcrumb {
+        margin-bottom: 2rem;
+    }
+
+    .tool-intro {
+        margin-bottom: 2rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .button {
+        width: 100%;
+    }
+
+    .input-suffix > span {
+        padding-inline: 0.65rem;
+    }
+}
