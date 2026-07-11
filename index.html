@@ -5,35 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>RekenMaarUit.nl — Geen mening. Gewoon rekenen.</title>
+
     <meta
         name="description"
-        content="Nuchtere rekentools voor alledaagse keuzes."
+        content="Nuchtere en transparante rekentools voor alledaagse vragen."
     >
 
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/main.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" defer></script>
 </head>
 
 <body>
     <header class="site-header">
-        <a class="logo" href="/">RekenMaarUit.nl</a>
-        <p>Geen mening. Gewoon rekenen.</p>
+        <div class="site-header__inner">
+            <a class="logo" href="./index.html">
+                RekenMaarUit<span>.nl</span>
+            </a>
+
+            <p class="tagline">Geen mening. Gewoon rekenen.</p>
+        </div>
     </header>
 
     <main>
-        <section>
+        <section class="hero">
+            <p class="eyebrow">Praktische rekentools</p>
+
             <h1>Wat wil je uitrekenen?</h1>
 
+            <p class="hero__intro">
+                Eenvoudige berekeningen met een duidelijke uitkomst
+                en uitleg over hoe die tot stand komt.
+            </p>
+        </section>
+
+        <section class="tools" aria-labelledby="tools-heading">
+            <h2 id="tools-heading" class="visually-hidden">
+                Beschikbare rekentools
+            </h2>
+
             <article class="tool-card">
-                <h2>Wat kost deze vergadering?</h2>
-                <p>Bereken wat een vergadering werkelijk aan werktijd kost.</p>
-                <a href="./tools/vergaderkosten/index.html">Bereken het</a>
+                <div class="tool-card__content">
+                    <p class="tool-card__category">Vergaderkosten</p>
+
+                    <h3>Wat kost deze vergadering?</h3>
+
+                    <p>
+                        Bereken wat een vergadering kost op basis van
+                        het aantal deelnemers, hun gemiddelde uurtarief
+                        en de vergaderduur.
+                    </p>
+                </div>
+
+                <a
+                    class="button"
+                    href="./tools/vergaderkosten/index.html"
+                >
+                    Bereken het
+                    <span aria-hidden="true">→</span>
+                </a>
             </article>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; <span id="year"></span> RekenMaarUit.nl</p>
+    <footer class="site-footer">
+        <p>
+            &copy; <span id="year"></span> RekenMaarUit.nl
+        </p>
+
         <p>Versie 0.1</p>
     </footer>
 </body>
