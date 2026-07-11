@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wat kost deze vergadering? | RekenMaarUit.nl</title>
+    <meta
+        name="description"
+        content="Bereken de geschatte kosten van een vergadering op basis van deelnemers, uurtarief en vergadertijd."
+    >
+
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+
+<header>
+    <a href="../../index.html">RekenMaarUit.nl</a>
+</header>
+
+<main>
+
+    <h1>Wat kost deze vergadering?</h1>
+
+    <p>
+        Bereken eenvoudig wat een vergadering kost op basis van het
+        gemiddelde uurtarief van de deelnemers en de duur van de vergadering.
+    </p>
+
+    <form id="vergaderkosten-form">
+
+        <label for="deelnemers">Aantal deelnemers</label>
+        <input
+            type="number"
+            id="deelnemers"
+            min="1"
+            value="6"
+            required
+        >
+
+        <label for="uurtarief">Gemiddeld uurtarief (€)</label>
+        <input
+            type="number"
+            id="uurtarief"
+            min="0"
+            step="0.01"
+            value="75"
+            required
+        >
+
+        <small>
+            Gebruik het interne kostentarief of een geschat gemiddeld uurtarief.
+        </small>
+
+        <label for="duur">Vergaderduur (minuten)</label>
+        <input
+            type="number"
+            id="duur"
+            min="1"
+            value="60"
+            required
+        >
+
+        <p>
+            <button type="submit">Bereken</button>
+            <button type="reset">Reset</button>
+        </p>
+
+    </form>
+
+    <section id="resultaat" aria-live="polite">
+
+        <h2>Resultaat</h2>
+
+        <p>
+            Vul de gegevens in en klik op <strong>Bereken</strong>.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h2>Hoe wordt dit berekend?</h2>
+
+        <p>
+            <strong>Vergaderkosten = aantal deelnemers × uurtarief × vergadertijd (in uren)</strong>
+        </p>
+
+        <p>
+            Deze berekening houdt alleen rekening met de tijdsinvestering
+            van de deelnemers. Voorbereiding, reistijd, faciliteiten en
+            eventuele indirecte kosten zijn niet meegenomen.
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © RekenMaarUit.nl
+    </p>
+
+</footer>
+
+<script src="calculator.js"></script>
+
+</body>
+</html>
