@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="nl">
 <head>
@@ -127,16 +126,13 @@
                             name="berekenmethode"
                         >
                             <option value="first-fit">
-                                First Fit Decreasing
+                                Praktisch zaagplan — First Fit Decreasing
                             </option>
 
-                            <option value="best-fit" disabled>
-                                Best Fit Decreasing — volgt later
+                            <option value="best-fit">
+                                Materiaalgericht — Best Fit Decreasing
                             </option>
 
-                            <option value="beste-resultaat" disabled>
-                                Beste resultaat — volgt later
-                            </option>
                         </select>
                     </div>
 
@@ -157,6 +153,7 @@
                             Kopieer twee kolommen uit Excel en plak ze hier.
                             De eerste kolom bevat de lengte in millimeters,
                             de tweede kolom het aantal stuks.
+                            Kolommen kunnen gescheiden worden met ";" of minimaal 2 spaties.
                         </p>
                     </div>
 
@@ -217,19 +214,15 @@
                 Rekenlengte per onderdeel =
                 onderdeelmaat + toeslag
             </p>
-
+            <h3>Praktisch Zaagplan</h3>
             <p>
-                In de eerste versie worden de onderdelen van lang naar kort
-                gesorteerd. Ieder onderdeel wordt vervolgens in de eerste
-                beschikbare uitgangslengte geplaatst waarin het nog past.
-                Deze methode heet First Fit Decreasing.
+                Onderdelen worden van lang naar kort gesorteerd en telkens in de eerste passende uitgangslengte geplaatst.
+                Dit geeft meestal een overzichtelijk en voorspelbaar zaagplan.
             </p>
-
+            <h3>Materiaalgericht</h3>
             <p>
-                De effectieve bruikbare lengte bepaalt hoeveel ruimte per
-                uitgangslengte beschikbaar is. Het verschil tussen de totale
-                uitgangslengte en de bruikbare lengte wordt niet gebruikt voor
-                het indelen van onderdelen.
+                Onderdelen worden van lang naar kort gesorteerd en telkens in de uitgangslengte geplaatst waarin daarna de minste ruimte overblijft.
+                Dit kan materiaal gunstiger verdelen, maar het uiteindelijke zaagplan kan minder logisch zijn om uit te voeren.
             </p>
         </section>
     </main>
@@ -255,4 +248,3 @@
     <script src="../../js/main.js"></script>
 </body>
 </html>
-```
