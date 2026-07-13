@@ -1,0 +1,258 @@
+```html
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Zaagcalculator | RekenMaarUit.nl</title>
+
+    <meta
+        name="description"
+        content="Bereken hoe onderdelen zo efficiënt mogelijk over beschikbare lengtes verdeeld kunnen worden."
+    >
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="calculator.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="logo" href="../../index.html">
+                RekenMaarUit<span>.nl</span>
+            </a>
+
+            <p class="tagline">Geen mening. Gewoon rekenen.</p>
+        </div>
+    </header>
+
+    <main class="tool-page">
+        <nav class="breadcrumb" aria-label="Kruimelpad">
+            <a href="../../index.html">Alle rekentools</a>
+            <span aria-hidden="true">/</span>
+            <span>Zaagcalculator</span>
+        </nav>
+
+        <header class="tool-intro">
+            <p class="eyebrow">Materiaaloptimalisatie</p>
+
+            <h1>Zaagcalculator</h1>
+
+            <p>
+                Verdeel onderdelen over beschikbare lengtes en bereken
+                hoeveel uitgangslengtes nodig zijn en welke restlengtes
+                overblijven.
+            </p>
+        </header>
+
+        <div class="calculator-layout">
+            <section
+                class="calculator-card"
+                aria-labelledby="calculator-heading"
+            >
+                <h2 id="calculator-heading">Vul de gegevens in</h2>
+
+                <form id="zaagcalculator-form" class="calculator-form">
+                    <div class="form-field">
+                        <label for="uitgangslengte">
+                            Uitgangslengte
+                        </label>
+
+                        <input
+                            type="number"
+                            id="uitgangslengte"
+                            name="uitgangslengte"
+                            min="1"
+                            step="1"
+                            value="6000"
+                            required
+                        >
+
+                        <p class="field-help">
+                            De totale lengte van één nieuwe materiaalstaaf,
+                            in millimeters.
+                        </p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="bruikbare-lengte">
+                            Effectief bruikbare lengte
+                        </label>
+
+                        <input
+                            type="number"
+                            id="bruikbare-lengte"
+                            name="bruikbare-lengte"
+                            min="1"
+                            step="1"
+                            value="5700"
+                            required
+                        >
+
+                        <p class="field-help">
+                            Het deel van de uitgangslengte waarin onderdelen
+                            daadwerkelijk mogen worden ingedeeld.
+                        </p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="toeslag">
+                            Toeslag per onderdeel
+                        </label>
+
+                        <input
+                            type="number"
+                            id="toeslag"
+                            name="toeslag"
+                            min="0"
+                            step="1"
+                            value="0"
+                            required
+                        >
+
+                        <p class="field-help">
+                            Extra benodigde lengte per onderdeel, bijvoorbeeld
+                            voor zaagdikte. Vul 0 in wanneer geen toeslag nodig is.
+                        </p>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="berekenmethode">
+                            Berekenmethode
+                        </label>
+
+                        <select
+                            id="berekenmethode"
+                            name="berekenmethode"
+                        >
+                            <option value="first-fit">
+                                First Fit Decreasing
+                            </option>
+
+                            <option value="best-fit" disabled>
+                                Best Fit Decreasing — volgt later
+                            </option>
+
+                            <option value="beste-resultaat" disabled>
+                                Beste resultaat — volgt later
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="onderdelen">
+                            Onderdelen
+                        </label>
+
+                        <textarea
+                            id="onderdelen"
+                            name="onderdelen"
+                            rows="10"
+                            placeholder="Lengte    Aantal&#10;1250      4&#10;875       8&#10;2140      2"
+                            required
+                        ></textarea>
+
+                        <p class="field-help">
+                            Kopieer twee kolommen uit Excel en plak ze hier.
+                            De eerste kolom bevat de lengte in millimeters,
+                            de tweede kolom het aantal stuks.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="button">
+                        Bereken zaagplan
+                    </button>
+
+                    <div
+                        id="invoerfouten"
+                        class="form-errors"
+                        role="alert"
+                        hidden
+                    ></div>
+                </form>
+            </section>
+
+            <section
+                id="resultaat"
+                class="result-card"
+                aria-live="polite"
+                aria-labelledby="resultaat-heading"
+            >
+                <p class="result-card__label">Samenvatting</p>
+
+                <h2 id="resultaat-heading">
+                    Nog niets berekend
+                </h2>
+
+                <p>
+                    Vul de materiaalgegevens en onderdelen in en klik op
+                    <strong>Bereken zaagplan</strong>.
+                </p>
+            </section>
+        </div>
+        <section
+            id="zaagplan-resultaat"
+            class="zaagplan-card"
+            aria-live="polite"
+            aria-labelledby="zaagplan-heading"
+            hidden
+        >
+            <div class="zaagplan-card__header">
+                <div>
+                    <p class="eyebrow">Indeling</p>
+                    <h2 id="zaagplan-heading">Zaagplan</h2>
+                </div>
+
+                <p id="zaagplan-methode" class="zaagplan-card__method"></p>
+            </div>
+
+            <div id="zaagplan-inhoud"></div>
+        </section>
+
+        <section class="explanation-card">
+            <h2>Hoe wordt dit berekend?</h2>
+
+            <p class="formula">
+                Rekenlengte per onderdeel =
+                onderdeelmaat + toeslag
+            </p>
+
+            <p>
+                In de eerste versie worden de onderdelen van lang naar kort
+                gesorteerd. Ieder onderdeel wordt vervolgens in de eerste
+                beschikbare uitgangslengte geplaatst waarin het nog past.
+                Deze methode heet First Fit Decreasing.
+            </p>
+
+            <p>
+                De effectieve bruikbare lengte bepaalt hoeveel ruimte per
+                uitgangslengte beschikbaar is. Het verschil tussen de totale
+                uitgangslengte en de bruikbare lengte wordt niet gebruikt voor
+                het indelen van onderdelen.
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__left">
+            <p>
+                &copy; <span id="year"></span> RekenMaarUit.nl
+            </p>
+
+            <p class="footer-tagline">
+                Geen mening. Gewoon rekenen.
+            </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+            <a href="/over.html">Over dit project</a>
+            <a href="/disclaimer.html">Disclaimer</a>
+            <a href="mailto:rekenmaaruit@proton.me">Contact</a>
+        </nav>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
+```

@@ -95,8 +95,8 @@ Na het pushen publiceert GitHub Pages de website automatisch.
 
 * [x] Basiswebsite
 * [x] Domein gekoppeld
-* [x] GitHub Pages ingericht
-* [ ] Eerste calculator: *Wat kost deze vergadering?*
+* [x] GitHub Pages ingerichtS
+* [x] Eerste calculator: *Wat kost deze vergadering?*
 * [ ] Herbruikbaar sjabloon voor nieuwe calculators
 * [ ] Verbeterde mobiele gebruikerservaring
 * [ ] Zoekmachine-optimalisatie
