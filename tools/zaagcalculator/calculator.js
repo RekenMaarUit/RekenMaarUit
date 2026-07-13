@@ -530,7 +530,9 @@ function createBarHtml(bar, index, usableLength) {
     .map((group) => {
         const allowanceText =
         group.allowance > 0
-        ? ` + ${formatMillimetres(group.allowance)} toeslag`
+        ? ` — rekenlengte ${formatMillimetres(
+            group.length + group.allowance
+        )} per stuk`
         : "";
 
         return `
