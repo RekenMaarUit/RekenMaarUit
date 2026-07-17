@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kosten per gebruik berekenen | RekenMaarUit.nl</title>
+
+    <meta
+        name="description"
+        content="Bereken wat een aankoop per gebruik, per maand en per jaar kost op basis van aanschafprijs, restwaarde, onderhoud en gebruik."
+    >
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="calculator.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="logo" href="../../index.html">
+                RekenMaarUit<span>.nl</span>
+            </a>
+
+            <p class="tagline">Geen mening. Gewoon rekenen.</p>
+        </div>
+    </header>
+
+    <main class="tool-page">
+        <nav class="breadcrumb" aria-label="Kruimelpad">
+            <a href="../../index.html">Alle rekentools</a>
+            <span aria-hidden="true">/</span>
+            <span>Aankoopkosten</span>
+        </nav>
+
+        <header class="tool-intro">
+            <p class="eyebrow">Aankoopkosten</p>
+            <h1>Wat kost mijn aankoop echt?</h1>
+            <p>
+                Een aankoop is meer dan alleen de aanschafprijs. Bereken wat een product je per gebruik, per maand en per jaar kost op basis van aanschafprijs, restwaarde, onderhoud en gebruik.
+            </p>
+        </header>
+
+        <div class="calculator-layout">
+            <section class="calculator-card" aria-labelledby="calculator-heading">
+                <h2 id="calculator-heading">Vul de gegevens in</h2>
+
+                <form id="kosten-per-gebruik-form" class="calculator-form">
+                    <div class="form-field">
+                        <label for="aanschafprijs">Aanschafprijs</label>
+
+                        <div class="input-prefix">
+                            <span aria-hidden="true">€</span>
+
+                            <input
+                                type="number"
+                                id="aanschafprijs"
+                                name="aanschafprijs"
+                                min="0"
+                                step="0.01"
+                                value="100"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Gebruik</h3>
+
+                        <div class="form-field">
+                            <label for="aantal-gebruiken">
+                                Hoe vaak verwacht je de aankoop te gebruiken?
+                            </label>
+
+                            <div class="compound-input">
+                                <input
+                                    type="number"
+                                    id="aantal-gebruiken"
+                                    name="aantal-gebruiken"
+                                    min="1"
+                                    step="1"
+                                    value="1"
+                                    required
+                                >
+
+                                <span>keer per</span>
+
+                                <select
+                                    id="gebruiksfrequentie"
+                                    name="gebruiksfrequentie"
+                                >
+                                    <option value="dag">dag</option>
+                                    <option value="week" selected>week</option>
+                                    <option value="maand">maand</option>
+                                    <option value="jaar">jaar</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="gebruiksperiode">
+                                Over welke gebruiksperiode wil je rekenen?
+                            </label>
+
+                            <div class="compound-input">
+                                <input
+                                    type="number"
+                                    id="gebruiksperiode"
+                                    name="gebruiksperiode"
+                                    min="0.1"
+                                    step="0.1"
+                                    value="5"
+                                    required
+                                >
+
+                                <select
+                                    id="periode-eenheid"
+                                    name="periode-eenheid"
+                                >
+                                    <option value="dag">dagen</option>
+                                    <option value="week">weken</option>
+                                    <option value="maand">maanden</option>
+                                    <option value="jaar" selected>jaar</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Waarde en onderhoud</h3>
+
+                        <div class="form-field">
+                            <label for="restwaarde">
+                                Verwachte restwaarde na de gebruiksperiode
+                            </label>
+
+                            <div class="input-prefix">
+                                <span aria-hidden="true">€</span>
+
+                                <input
+                                    type="number"
+                                    id="restwaarde"
+                                    name="restwaarde"
+                                    min="0"
+                                    step="0.01"
+                                    value="0"
+                                    required
+                                >
+                            </div>
+
+                            <p class="field-help">
+                                Vul 0 in als je geen restwaarde verwacht.
+                            </p>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="onderhoud">Terugkerende kosten</label>
+
+                            <div class="compound-input">
+                                <div class="input-prefix">
+                                    <span aria-hidden="true">€</span>
+
+                                    <input
+                                        type="number"
+                                        id="onderhoud"
+                                        name="onderhoud"
+                                        min="0"
+                                        step="0.01"
+                                        value="0"
+                                        required
+                                    >
+                                </div>
+
+                                <span>per</span>
+
+                                <select
+                                    id="onderhoudsfrequentie"
+                                    name="onderhoudsfrequentie"
+                                >
+                                    <option value="dag">dag</option>
+                                    <option value="week">week</option>
+                                    <option value="maand" selected>maand</option>
+                                    <option value="jaar">jaar</option>
+                                </select>
+                            </div>
+
+                            <p class="field-help">
+                                Bijvoorbeeld onderhoud, verbruiksmateriaal of abonnementskosten.<br>
+                                Laat dit op 0 staan als er geen terugkerende kosten zijn.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="button" type="submit">
+                            Bereken kosten
+                        </button>
+
+                        <button class="button button--secondary" type="reset">
+                            Reset
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <section
+                id="resultaat"
+                class="result-card"
+                aria-live="polite"
+                aria-labelledby="resultaat-heading"
+            >
+                <p class="result-card__label">Uitkomst</p>
+
+                <h2 id="resultaat-heading">Nog niets berekend</h2>
+
+                <p>
+                    Vul de gegevens in en klik op
+                    <strong>Bereken</strong>.
+                </p>
+            </section>
+        </div>
+
+        <section class="explanation-card">
+            <h2>Hoe wordt dit berekend?</h2>
+
+            <p class="formula">
+                Plaats hier de formule.
+            </p>
+
+            <p>
+                Leg hier de berekening, aannames en beperkingen uit.
+            </p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="site-footer__left">
+            <p>&copy; <span id="year"></span> RekenMaarUit.nl</p>
+            <p class="footer-tagline">Geen mening. Gewoon rekenen.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+            <a href="/over.html">Over dit project</a>
+            <a href="/disclaimer.html">Disclaimer</a>
+            <a href="mailto:rekenmaaruit@proton.me">Contact</a>
+        </nav>
+
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
